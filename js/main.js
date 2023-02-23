@@ -3,6 +3,10 @@ const COLORS = ["tomato", "green", "blueviolet", "pink", "blue", "grey"];
 const colorsBox = document.querySelector(".colors");
 const button = document.querySelector(".btn");
 
+const changeColor = (color) => {
+  document.body.style.backgroundColor = color;
+};
+
 COLORS.forEach((color) => {
   const elem = document.createElement("div");
   elem.classList.add("color");
@@ -12,8 +16,9 @@ COLORS.forEach((color) => {
 
 colorsBox.addEventListener("click", (e) => {
   button.style.backgroundColor = e.target.style.backgroundColor;
+  button.setAttribute("data-color", e.target.style.backgroundColor);
 });
 
 button.addEventListener("click", (e) => {
-  document.body.style.backgroundColor = e.target.style.backgroundColor;
+  changeColor(e.target.getAttribute("data-color"));
 });
